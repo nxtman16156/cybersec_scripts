@@ -57,6 +57,7 @@ else
             done
             if [[ $answer = y ]]
             then
+                echo
                 $file
             fi
         fi

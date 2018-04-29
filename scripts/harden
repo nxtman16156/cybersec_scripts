@@ -1,5 +1,32 @@
 #!/usr/bin/env bash
 
-# Scan for users with EUID of 0 (root users)
-# Should only return one line
-
+# Check for root (in case script isn't run from setup.sh)
+if [[ $EUID != 0 ]]
+then
+    echo "Please run as root"
+else
+    # Scan for users with EUID of 0 (root users)
+    # Should only return one line
+    echo "Users in root group:"
+    awk -F: '($3 == "0")' /etc/passwd
+    
+    # Ask to remove all non root users from root group
+    readable=false
+    while [[ $readable = false ]]
+    do
+        read -p "Remove all non root users from root group? [y/n] " answer
+        if [[ $answer = y ]] || [[ $answer = n ]]
+        then
+            readable=true
+        else
+            echo "Please enter a valid answer"
+        fi
+    done
+    
+    # Remove all non root users from root group
+    if [[ $readable = true ]]
+    then
+        # Gotta fill in this bit
+        echo
+    fi
+fi

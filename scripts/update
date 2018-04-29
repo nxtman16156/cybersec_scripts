@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+if [[ $EUID != 0 ]]
+then
+    echo "Please run as root"
+else
+    echo
+    apt-get update
+    echo
+    apt-get upgrade
+    echo
+    
+    readable=false
+    while [[ $readable = false ]]
+    do
+        read -p "Set up auto-update? [y\n] " answer
+        if [[ $answer = y ]] || [[ $answer = n ]]
+        then
+            readable=true
+        else
+            echo "Please enter valid answer"
+        fi
+    done
+    
+    if [[ $answer = y ]]
+    then
+        apt-get install unattended-upgrades
+        nano /etc/apt/apt.conf.d/50unattended-upgrades
+    fi
+fi

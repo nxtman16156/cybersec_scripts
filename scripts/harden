@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# Scan for users with EUID of 0 (root users)
+# Should only return one line
+

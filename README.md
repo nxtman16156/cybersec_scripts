@@ -1,1 +1,1 @@
-# Cybersec Scripts
+# GSMST CS

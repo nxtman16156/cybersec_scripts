@@ -11,7 +11,7 @@ else
     awk -F: '($3 == "0")' /etc/passwd
     
     # Ask to remove all non root users from root group
-    ./confirm.sh "Remove all non root users from root group"
+    confirm.sh "Remove all non root users from root group"
     
     # Remove all non root users from root group
     if [[ $? = 1 ]]

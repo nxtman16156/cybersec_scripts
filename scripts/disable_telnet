@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# fellas, this script requires use of exit values of the dkpg program
+# and this site that i'm using to write this uses an outdated version
+# of Ubuntu that uses switched return values (for balls sake why, BE
+# CONSISTENT). Seriously, there's no reason for them to switch around
+# these return values like that. It just 'causes compatibility problems
+# such as this one.

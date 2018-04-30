@@ -10,7 +10,7 @@ else
     apt-get upgrade
     echo
     
-    ./confirm.sh "Set up auto-update"
+    confirm.sh "Set up auto-update"
     
     if [[ $? = 1 ]]
     then

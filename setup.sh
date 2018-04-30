@@ -29,11 +29,11 @@ then
     echo "Please run as root"
 else
     # Tell kernel to allow the scripts in scripts/ to be executed
-    chmod +x confirm.sh
+    chmod +x *.sh
     chmod +x $(pwd)/scripts/*
     
     # Append scripts/ to PATH
-    export PATH=$PATH:$(pwd)/scripts
+    export PATH=$PATH:$(pwd)/scripts:$(pwd)/functions
     
     # Loop through each file in scripts/
     for file in scripts/*
@@ -44,7 +44,7 @@ else
             $file
         elif [[ $behavior = ask ]]
         then
-            ./confirm.sh "Run the script: ${file}"
+            confirm.sh "Run the script: ${file}"
             
             if [[ $? = 1 ]]
             then

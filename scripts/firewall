@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+# Can't test now
+
+# This script will require revising
+# Rushi gotta tell me which ports to allow
+# Right now, literally everything is blocked
+
+if [[ $EUID != 0 ]]
+then
+    echo "Please run as root"
+else
+    apt-get install iptables
+    apt-get install ufw
+    
+    # Deny every port incoming and outgoing
+    # ufw default deny outgoing
+    # ufw default deny incoming
+    
+    ufw enable
+    ufw status
+fi

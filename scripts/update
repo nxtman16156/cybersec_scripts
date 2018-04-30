@@ -10,19 +10,9 @@ else
     apt-get upgrade
     echo
     
-    readable=false
-    while [[ $readable = false ]]
-    do
-        read -p "Set up auto-update? [y\n] " answer
-        if [[ $answer = y ]] || [[ $answer = n ]]
-        then
-            readable=true
-        else
-            echo "Please enter valid answer"
-        fi
-    done
+    ./confirm.sh "Set up auto-update"
     
-    if [[ $answer = y ]]
+    if [[ $? = 1 ]]
     then
         apt-get install unattended-upgrades
         nano /etc/apt/apt.conf.d/50unattended-upgrades

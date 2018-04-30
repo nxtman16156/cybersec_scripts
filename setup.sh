@@ -29,6 +29,7 @@ then
     echo "Please run as root"
 else
     # Tell kernel to allow the scripts in scripts/ to be executed
+    chmod +x confirm.sh
     chmod +x $(pwd)/scripts/*
     
     # Append scripts/ to PATH
@@ -43,19 +44,9 @@ else
             $file
         elif [[ $behavior = ask ]]
         then
-            finished=false
-            # Keep asking for answer until a valid one is given
-            while [[ $finished = false ]]
-            do
-                read -p "Run the script: ${file}? [y/n] " answer
-                if [[ $answer = y ]] || [[ $answer = n ]]
-                then
-                    finished=true
-                else
-                    echo "Please enter a valid answer"
-                fi
-            done
-            if [[ $answer = y ]]
+            ./confirm.sh "Run the script: ${file}"
+            
+            if [[ $? = 1 ]]
             then
                 echo
                 $file

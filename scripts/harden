@@ -11,20 +11,10 @@ else
     awk -F: '($3 == "0")' /etc/passwd
     
     # Ask to remove all non root users from root group
-    readable=false
-    while [[ $readable = false ]]
-    do
-        read -p "Remove all non root users from root group? [y/n] " answer
-        if [[ $answer = y ]] || [[ $answer = n ]]
-        then
-            readable=true
-        else
-            echo "Please enter a valid answer"
-        fi
-    done
+    ./confirm.sh "Remove all non root users from root group"
     
     # Remove all non root users from root group
-    if [[ $readable = true ]]
+    if [[ $? = 1 ]]
     then
         # Gotta fill in this bit
         echo

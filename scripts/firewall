@@ -6,6 +6,8 @@
 # Rushi gotta tell me which ports to allow
 # Right now, literally everything is blocked
 
+# Wrote a little manual config script for the firewalls
+
 if [[ $EUID != 0 ]]
 then
     echo "Please run as root"
@@ -14,8 +16,10 @@ else
     apt-get install ufw
     
     # Deny every port incoming and outgoing
-    # ufw default deny outgoing
-    # ufw default deny incoming
+    ufw default deny outgoing
+    ufw default deny incoming
+    
+    firewall_config.sh
     
     ufw enable
     ufw status

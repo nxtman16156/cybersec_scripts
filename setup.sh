@@ -31,6 +31,7 @@ else
     # Tell kernel to allow the scripts in scripts/ to be executed
     chmod +x *.sh
     chmod +x $(pwd)/scripts/*
+    chmod +x $(pwd)/functions/*
     
     # Append scripts/ to PATH
     export PATH=$PATH:$(pwd)/scripts:$(pwd)/functions
